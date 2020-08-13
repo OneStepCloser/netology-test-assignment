@@ -1,0 +1,29 @@
+@import-normalize;
+@import './_mixins.scss';
+@import './_fonts.scss';
+@import './_colors.scss';
+
+body {
+  margin: 0;
+  font-family: Ubuntu, sans-serif;
+  color: $gray-900;
+  box-sizing: border-box;
+
+  *,
+  *::after,
+  *::before {
+    box-sizing: border-box;
+  }
+}
+
+html {
+  @include min-height100();
+
+  body {
+    @include min-height100();
+
+    #root {
+      @include min-height100();
+    }
+  }
+}

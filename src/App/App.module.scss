@@ -1,0 +1,10 @@
+@import 'assets/styles/_mixins.scss';
+@import 'assets/styles/_colors.scss';
+@import 'assets/styles/_variables.scss';
+
+.app-root {
+  @include min-height100();
+
+  background-color: $gray-100;
+
+}
