@@ -1,0 +1,22 @@
+@import 'assets/styles/_variables.scss';
+@import 'assets/styles/_colors.scss';
+
+.app-header-root {
+  padding: 12px $side-padding;
+  color: white;
+  background-color: $theme-color;
+  display: flex;
+  align-items: center;
+
+  .icon {
+    width: 2em;
+    height: 2em;
+    margin-right: 1em;
+  }
+
+  .header {
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: 700;
+  }
+}
