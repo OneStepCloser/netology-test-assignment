@@ -9,7 +9,7 @@ function App() {
       <AppHeader/>
       <div className={styles['content']}>
         <div className={styles['content-card']}>
-          <EmployeesTable/>
+          <EmployeesTable className={styles['employees-table-outer']}/>
         </div>
       </div>
       <div className={styles['credits']}>

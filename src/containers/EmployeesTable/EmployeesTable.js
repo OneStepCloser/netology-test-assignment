@@ -6,6 +6,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import classNames from 'classnames';
 import store, { loadEmployees } from 'store/store';
 import styles from './EmployeesTable.module.scss';
 
@@ -39,8 +40,13 @@ class EmployeesTable extends React.Component {
 
   render() {
     const fetchingEmployees = this.state.fetchingEmployees
+    const rootClasses = classNames(
+      styles['employees-table-root'],
+      { [this.props.className]: this.props.className },
+    )
+
     return (
-      <>
+      <div className={ rootClasses }>
       { fetchingEmployees &&
         <CircularProgress size={20} className={styles['circular-progress-outer']}/>
       }
@@ -63,7 +69,7 @@ class EmployeesTable extends React.Component {
           </TableBody>
         </Table>
       }
-      </>
+      </div>
     )
   }
 

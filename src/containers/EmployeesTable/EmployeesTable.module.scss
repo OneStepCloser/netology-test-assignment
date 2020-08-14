@@ -1,12 +1,14 @@
-.circular-progress-outer {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+.employees-table-root {
+  display: flex;
+  flex-direction: column;
 
-.table-head-outer {
-  :global(.MuiTableCell-head) {
-    font-weight: bold;
+  .circular-progress-outer {
+    margin: auto;
+  }
+
+  .table-head-outer {
+    :global(.MuiTableCell-head) {
+      font-weight: bold;
+    }
   }
 }
