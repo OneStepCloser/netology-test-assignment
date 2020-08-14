@@ -1,11 +1,14 @@
-@font-face {
-  font-family: "Ubuntu";
-  font-weight: 400;
-  src: url("/assets/fonts/Ubuntu/Ubuntu-Regular.ttf");
+@mixin initFont($font-family, $weight, $path) {
+  @font-face {
+    font-family: $font-family;
+    font-weight: $weight;
+    src: url('#{'/assets/fonts/' + $path }');
+  }
 }
 
-@font-face {
-  font-family: "Ubuntu";
-  font-weight: 700;
-  src: url("/assets/fonts/Ubuntu/Ubuntu-Bold.ttf");
-}
+@include initFont('Roboto', 100, 'Roboto/Roboto-Thin.ttf');
+@include initFont('Roboto', 300, 'Roboto/Roboto-Light.ttf');
+@include initFont('Roboto', 400, 'Roboto/Roboto-Regular.ttf');
+@include initFont('Roboto', 500, 'Roboto/Roboto-Medium.ttf');
+@include initFont('Roboto', 700, 'Roboto/Roboto-Bold.ttf');
+@include initFont('Roboto', 900, 'Roboto/Roboto-Black.ttf');
