@@ -16,6 +16,10 @@ body {
   }
 }
 
+a {
+  color: inherit;
+}
+
 html {
   @include min-height100();
 

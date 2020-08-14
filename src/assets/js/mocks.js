@@ -54,3 +54,7 @@ const employees = [
     age: 22,
   },
 ];
+
+export {
+  employees,
+};
