@@ -1,4 +1,6 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { fetchEmployees } from 'assets/js/mocks';
 
 const initialState = {
   employees: null,
@@ -7,6 +9,18 @@ const initialState = {
 export const ReducerType = {
   LOAD_EMPLOYEES: 'LOAD_EMPLOYEES',
 };
+
+export function loadEmployees() {
+  return function (dispatch) {
+    return fetchEmployees()
+      .then((data) => {
+          dispatch({
+            type: ReducerType.LOAD_EMPLOYEES,
+            payload: data,
+          })
+      })
+  }
+}
 
 function rootReducer (state = initialState, action) {
   switch (action.type) {
@@ -22,4 +36,5 @@ function rootReducer (state = initialState, action) {
 
 export default createStore(
   rootReducer,
+  applyMiddleware(thunk),
 );

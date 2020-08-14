@@ -1,4 +1,4 @@
-export async function loadEmployees() {
+export async function fetchEmployees() {
   const resp = await fetch('https://5f35e9bb5b91f60016ca519d.mockapi.io/employees');
 
   if (resp.ok) {
