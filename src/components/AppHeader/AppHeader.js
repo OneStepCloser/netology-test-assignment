@@ -8,6 +8,7 @@ export default class AppHeader extends React.Component {
         <img
           src={ require('assets/img/users.svg') }
           className={ styles['icon'] }
+          alt="Logo"
         />
         <h1 className={ styles['header'] }>Список сотрудников</h1>
       </div>

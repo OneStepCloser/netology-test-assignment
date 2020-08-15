@@ -3,7 +3,7 @@
     font-family: $font-family;
     font-weight: $weight;
     src: url('#{'/assets/fonts/' + $path }');
-  }
+  };
 }
 
 @include initFont('Roboto', 100, 'Roboto/Roboto-Thin.ttf');

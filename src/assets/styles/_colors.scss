@@ -3,3 +3,7 @@ $gray-500: #7A7A7A;
 $gray-900: #333333;
 
 $theme-color: #152BA8;
+
+:export {
+  themeColor: $theme-color;
+}
