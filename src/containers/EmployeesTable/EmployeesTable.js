@@ -63,7 +63,6 @@ class EmployeesTable extends React.Component {
   }
 
   isEmployeeSelected(id) {
-    console.log('IS EMLOYEE SELECTED', id, this.state.selectedEmployees.includes(id))
     return this.state.selectedEmployees.includes(id)
   }
 
@@ -85,12 +84,12 @@ class EmployeesTable extends React.Component {
   handleSelectAllEmployees(e) {
     const checked = e.target.checked
 
-    console.log('CHECKED', checked)
-
-    this.setState((state, props) => ({
-      ...state,
-      selectedEmployees: checked ? props.employees.slice() : []
-    }))
+    this.setState((state, props) => {
+      return {
+        ...state,
+        selectedEmployees: checked ? props.employees.map(emp => emp.id) : []
+      }
+    })
   }
 
   render() {
@@ -138,8 +137,8 @@ class EmployeesTable extends React.Component {
                   >
                     <TableCell padding="checkbox">
                       <Checkbox
-                      checked={isSelected}
-                      onChange={(e) => this.handleEmployeeSelected(emp.id, e)}
+                        checked={isSelected}
+                        onChange={(e) => this.handleEmployeeSelected(emp.id, e)}
                       />
                     </TableCell>
                     <TableCell>{emp.firstName}</TableCell>
@@ -152,7 +151,7 @@ class EmployeesTable extends React.Component {
             </TableBody>
             <TableFooter>
               <TableRow>
-                <TableCell colSpan={4}>Пользователи: { this.getSelectedEmployeesNames() }</TableCell>
+                <TableCell colSpan={4}>Пользователи: { this.getSelectedEmployeesNames() || 'Не выбрано' }</TableCell>
               </TableRow>
             </TableFooter>
           </Table>
