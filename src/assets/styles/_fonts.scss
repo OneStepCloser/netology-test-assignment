@@ -2,13 +2,14 @@
   @font-face {
     font-family: $font-family;
     font-weight: $weight;
-    src: url('#{'/assets/fonts/' + $path }');
+    src: url('#{'../fonts/' + $path }');
+    font-display: block;
   };
 }
 
-@include initFont('Roboto', 100, 'Roboto/Roboto-Thin.ttf');
-@include initFont('Roboto', 300, 'Roboto/Roboto-Light.ttf');
-@include initFont('Roboto', 400, 'Roboto/Roboto-Regular.ttf');
-@include initFont('Roboto', 500, 'Roboto/Roboto-Medium.ttf');
-@include initFont('Roboto', 700, 'Roboto/Roboto-Bold.ttf');
-@include initFont('Roboto', 900, 'Roboto/Roboto-Black.ttf');
+@include initFont('Roboto', 100, 'Roboto/Roboto-Thin.woff');
+@include initFont('Roboto', 300, 'Roboto/Roboto-Light.woff');
+@include initFont('Roboto', 400, 'Roboto/Roboto-Regular.woff');
+@include initFont('Roboto', 500, 'Roboto/Roboto-Medium.woff');
+@include initFont('Roboto', 700, 'Roboto/Roboto-Bold.woff');
+@include initFont('Roboto', 900, 'Roboto/Roboto-Black.woff');
