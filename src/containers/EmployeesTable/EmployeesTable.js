@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Table from '@material-ui/core/Table';
+import TableContainer from '@material-ui/core/TableContainer';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
@@ -114,47 +115,49 @@ class EmployeesTable extends React.Component {
         }
         {
           !fetchingEmployees && !error &&
-          <Table stickyHeader={ true }>
-            <TableHead className={ styles['table-head-outer'] }>
-              <TableRow>
-                <TableCell padding="checkbox">
-                  <Checkbox
-                    checked={ this.areAllEmployeesSelected() }
-                    onChange={ (e) => this.handleSelectAllEmployees(e) }
-                  />
-                </TableCell>
-                { columns.map(col => <TableCell key={ col.key }>{ col.title }</TableCell>) }
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {
-                this.props.employees.map((emp) => {
-                const isSelected = this.isEmployeeSelected(emp.id)
-                return (
-                  <TableRow
-                    key={emp.id}
-                    selected={isSelected}
-                  >
-                    <TableCell padding="checkbox">
-                      <Checkbox
-                        checked={isSelected}
-                        onChange={(e) => this.handleEmployeeSelected(emp.id, e)}
-                      />
-                    </TableCell>
-                    <TableCell>{emp.firstName}</TableCell>
-                    <TableCell>{emp.lastName}</TableCell>
-                    <TableCell>{emp.age}</TableCell>
-                  </TableRow>
-                )
-                })
-              }
-            </TableBody>
-            <TableFooter>
-              <TableRow>
-                <TableCell colSpan={4}>Пользователи: { this.getSelectedEmployeesNames() || 'Не выбрано' }</TableCell>
-              </TableRow>
-            </TableFooter>
-          </Table>
+          <TableContainer>
+            <Table stickyHeader={ true }>
+              <TableHead className={ styles['table-head-outer'] }>
+                <TableRow>
+                  <TableCell padding="checkbox">
+                    <Checkbox
+                      checked={ this.areAllEmployeesSelected() }
+                      onChange={ (e) => this.handleSelectAllEmployees(e) }
+                    />
+                  </TableCell>
+                  { columns.map(col => <TableCell key={ col.key }>{ col.title }</TableCell>) }
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {
+                  this.props.employees.map((emp) => {
+                  const isSelected = this.isEmployeeSelected(emp.id)
+                  return (
+                    <TableRow
+                      key={emp.id}
+                      selected={isSelected}
+                    >
+                      <TableCell padding="checkbox">
+                        <Checkbox
+                          checked={isSelected}
+                          onChange={(e) => this.handleEmployeeSelected(emp.id, e)}
+                        />
+                      </TableCell>
+                      <TableCell>{emp.firstName}</TableCell>
+                      <TableCell>{emp.lastName}</TableCell>
+                      <TableCell>{emp.age}</TableCell>
+                    </TableRow>
+                  )
+                  })
+                }
+              </TableBody>
+              <TableFooter>
+                <TableRow>
+                  <TableCell colSpan={4}>Пользователи: { this.getSelectedEmployeesNames() || 'Не выбрано' }</TableCell>
+                </TableRow>
+              </TableFooter>
+            </Table>
+          </TableContainer>
         }
       </div>
     )

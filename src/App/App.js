@@ -1,6 +1,7 @@
 import React from 'react';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/core/styles';
+import classNames from 'classnames';
 
 import styles from './App.module.scss';
 import AppHeader from 'components/AppHeader/AppHeader';
@@ -16,11 +17,13 @@ const theme = createMuiTheme({
 });
 
 function App() {
+  const contentClasses = classNames(styles.content, 'site-wide-paddings', 'mobile-no-paddings');
+
   return (
     <ThemeProvider theme={theme}>
       <div className={styles['app-root']}>
         <AppHeader/>
-        <div className={styles['content']}>
+        <div className={ contentClasses }>
           <div className={styles['content-card']}>
             <EmployeesTable className={styles['employees-table-outer']}/>
           </div>

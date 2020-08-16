@@ -2,7 +2,8 @@
 @import 'assets/styles/_colors.scss';
 
 .app-header-root {
-  padding: 12px $side-padding;
+  padding-top: 12px;
+  padding-bottom: 12px;
   color: white;
   background-color: $theme-color;
   display: flex;

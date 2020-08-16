@@ -1,0 +1,21 @@
+@import './_variables.scss';
+
+.site-wide-paddings {
+  $side-padding-min: 10px;
+  $side-padding: calc((100% - #{$site-max-width}) / 2);
+
+  padding-left: $side-padding;
+  padding-right: $side-padding;
+
+  @media (max-width: calc(#{$site-max-width} + #{$side-padding-min} * 2)) {
+    padding-left: $side-padding-min;
+    padding-right: $side-padding-min;
+  }
+}
+
+.mobile-no-paddings {
+  @media (max-width: $small-bp) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
