@@ -25,22 +25,6 @@ function App() {
             <EmployeesTable className={styles['employees-table-outer']}/>
           </div>
         </div>
-        <div className={styles['credits']}>
-          Icons made by&nbsp;
-          <a
-            href="https://creativemarket.com/Becris"
-            title="Becris"
-          >
-            Becris
-          </a>
-          &nbsp;from&nbsp;
-          <a
-            href="https://www.flaticon.com/"
-            title="Flaticon"
-          >
-            www.flaticon.com
-          </a>
-        </div>
       </div>
     </ThemeProvider>
   );
