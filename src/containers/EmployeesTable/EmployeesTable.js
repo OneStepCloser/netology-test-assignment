@@ -8,6 +8,7 @@ import TableFooter from '@material-ui/core/TableFooter';
 import TableRow from '@material-ui/core/TableRow';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Checkbox from '@material-ui/core/Checkbox';
+import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 import classNames from 'classnames';
 import store, { loadEmployees } from 'store/store';
 import styles from './EmployeesTable.module.scss';
@@ -33,6 +34,7 @@ class EmployeesTable extends React.Component {
     this.state = {
       fetchingEmployees: true,
       selectedEmployees: [],
+      error: '',
     };
   }
 
@@ -93,6 +95,7 @@ class EmployeesTable extends React.Component {
 
   render() {
     const fetchingEmployees = this.state.fetchingEmployees
+    const error = this.state.error
     const rootClasses = classNames(
       styles['employees-table-root'],
       { [this.props.className]: this.props.className },
@@ -104,7 +107,14 @@ class EmployeesTable extends React.Component {
           <CircularProgress size={20} className={styles['circular-progress-outer']}/>
         }
         {
-          !fetchingEmployees &&
+          !fetchingEmployees && error &&
+            <div className={ styles['error-container'] }>
+              <ErrorOutlineIcon color="error"/>
+              <span className={ styles['error-text'] }>{ error }</span>
+            </div>
+        }
+        {
+          !fetchingEmployees && !error &&
           <Table stickyHeader={ true }>
             <TableHead className={ styles['table-head-outer'] }>
               <TableRow>
@@ -155,6 +165,9 @@ class EmployeesTable extends React.Component {
     this.fetchEmployees()
       .then(() => {
         this.setState({ fetchingEmployees: false });
+      })
+      .catch((error) => {
+        this.setState({ fetchingEmployees: false, error: error.message });
       })
   }
 };

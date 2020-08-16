@@ -6,6 +6,16 @@
     margin: auto;
   }
 
+  .error-container {
+    margin: auto;
+    display: flex;
+    align-items: center;
+
+    .error-text {
+      margin-left: 0.5em;
+    }
+  }
+
   .table-head-outer {
     :global(.MuiTableCell-head) {
       font-weight: bold;
