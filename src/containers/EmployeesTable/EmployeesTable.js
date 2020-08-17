@@ -34,7 +34,7 @@ class EmployeesTable extends React.Component {
     super(props);
     this.state = {
       fetchingEmployees: true,
-      selectedEmployees: [],
+      selectedEmployees: new Set(),
       error: '',
     };
   }
@@ -47,14 +47,9 @@ class EmployeesTable extends React.Component {
     const checked = e.target.checked
 
     this.setState((state) => {
-      const newSelectedEmployees = state.selectedEmployees.slice()
+      const newSelectedEmployees = new Set(state.selectedEmployees)
 
-      if (checked)
-        newSelectedEmployees.push(id)
-      else {
-        const i = newSelectedEmployees.indexOf(id)
-        newSelectedEmployees.splice(i, 1)
-      }
+      checked ? newSelectedEmployees.add(id) : newSelectedEmployees.delete(id)
 
       return {
         ...state,
@@ -64,7 +59,7 @@ class EmployeesTable extends React.Component {
   }
 
   isEmployeeSelected(id) {
-    return this.state.selectedEmployees.includes(id)
+    return this.state.selectedEmployees.has(id)
   }
 
   getSelectedEmployees() {
@@ -79,7 +74,7 @@ class EmployeesTable extends React.Component {
   }
 
   areAllEmployeesSelected() {
-    return this.props.employees.length === this.state.selectedEmployees.length
+    return this.props.employees.length === this.state.selectedEmployees.size
   }
 
   handleSelectAllEmployees(e) {
@@ -88,7 +83,7 @@ class EmployeesTable extends React.Component {
     this.setState((state, props) => {
       return {
         ...state,
-        selectedEmployees: checked ? props.employees.map(emp => emp.id) : []
+        selectedEmployees: checked ? new Set(props.employees.map(emp => emp.id)) : new Set()
       }
     })
   }
@@ -116,7 +111,7 @@ class EmployeesTable extends React.Component {
         {
           !fetchingEmployees && !error &&
           <TableContainer>
-            <Table stickyHeader={ true }>
+            <Table>
               <TableHead className={ styles['table-head-outer'] }>
                 <TableRow>
                   <TableCell padding="checkbox">
